@@ -1,23 +1,17 @@
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
 const btn = document.querySelectorAll(".userOption");
 let numBtn = btn.length;
+let uSelection;
+let computerSelection
 
-rock.onclick = function() {
-  console.log("Rock selected")
-};
+//Captures user's choice into a variable uSelection
+let showUserSelect = function () {
+  uSelection = this.id;
+}
+document.getElementById("rock").onclick = showUserSelect;
+document.getElementById("paper").onclick = showUserSelect;
+document.getElementById("scissors").onclick = showUserSelect;
 
-paper.onclick = function () {
-  console.log("Paper selected")
-};
-
-scissors.onclick = function () {
-  console.log("Scissor selected")
-};
-
-
-
+//Computer's selection based on randomly generated number
 let getCompSelection = function r () {
   let randomNumber = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 
@@ -33,6 +27,7 @@ let getCompSelection = function r () {
       computerSelection = "scissors";
       break;
   }
+  console.log(`User Chooses: ${uSelection}`)
   console.log(`Computer Chooses: ${computerSelection}`);
   return computerSelection
 };
