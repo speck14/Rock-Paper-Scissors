@@ -18,7 +18,7 @@ document.getElementById('paper').onclick = showUserSelect;
 document.getElementById('scissors').onclick = showUserSelect;
 document.getElementById('resetScore').onclick = resetScore;
 
-//Computer's selection based on randomly generated number
+//Computer's selection based on randomly generated number, writes individual game results to HTML doc
 let getCompSelection = function r() {
   let randomNumber = Math.floor(Math.random() * (3 - 1 + 1) + 1);
   switch (randomNumber) {
@@ -37,27 +37,44 @@ let getCompSelection = function r() {
   return computerSelection;
 };
 
-//Compare user choice with computer selection to determine and display game results
+//Displays current score, color-coded
+function displayScore (cScore, usScore) {
+  if (cScore > usScore) {
+    computerScore.style.color = 'LimeGreen';
+    userScore.style.color = 'red';
+    computerScore.innerHTML = compScore;
+    userScore.innerHTML = uScore;
+  } else if (usScore > cScore) {
+    computerScore.style.color='red';
+    userScore.style.color='LimeGreen';
+    computerScore.innerHTML = compScore;
+    userScore.innerHTML = uScore;
+  } else {
+    computerScore.style.color = 'black';
+    userScore.style.color = 'black';
+    computerScore.innerHTML = compScore;
+    userScore.innerHTML = uScore;
+  }
+}
+
+//Compare user choice with computer selection to determine and display game results, update score
 function compareChoice(cSelect, uSelect) {
   if (cSelect === uSelect) {
     let gameResult = "It's a tie!"
     outcome.innerHTML = gameResult;
-    computerScore.innerHTML = compScore;
-    userScore.innerHTML = uScore;
+    displayScore(compScore, uScore);
     return gameResult;
   } else if (cSelect === "rock" && uSelect === "scissors" || cSelect === "paper" && uSelect === "rock" || cSelect === "scissors" && uSelect === "paper") {
     let gameResult = "You lose!"
     outcome.innerHTML = gameResult;
     compScore ++;
-    computerScore.innerHTML = compScore;
-    userScore.innerHTML = uScore;
+    displayScore(compScore, uScore);
     return gameResult;
   } else {
     let gameResult = "You win!"
     outcome.innerHTML = gameResult;
     uScore ++;
-    computerScore.innerHTML = compScore;
-    userScore.innerHTML = uScore;
+    displayScore(compScore, uScore);
     return gameResult;
   };
 };
@@ -74,6 +91,5 @@ for (let i = 0; i < numBtn; i++) {
 function resetScore () {
   uScore = 0;
   compScore= 0;
-  computerScore.innerHTML = compScore;
-  userScore.innerHTML = uScore;
+  displayScore(compScore, uScore)
 }
