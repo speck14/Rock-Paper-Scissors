@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-  <body>
-      <h1>Choose One:</h1>
-      <p>Or else...</p>
-      <button class="userOption" id="rock">Rock</button>
-      <button class="userOption" id="paper">Paper</button>
-      <button class="userOption" id="scissors">Scissors</button>
-      
-      
-  </body>
-  <footer>
-    <script src="app.js"></script>
-  </footer>
+
+<head>
+</head>
+
+<body>
+  <div id="initGame">
+    <h1>Choose One:</h1>
+    <p>Or else...</p>
+    <button class="userOption" id="rock">Rock</button>
+    <button class="userOption" id="paper">Paper</button>
+    <button class="userOption" id="scissors">Scissors</button>
+  </div>
+
+  <div id="gameResults">
+    <h2 id="uResult"></h2>
+    <h2 id="cResult"></h2>
+    <h2 id="outcome"></h2>
+    <h3 id ="scoreTracker">Score:</h3>
+    <p>Computer Score: <span id="computerScore">0</span></p>
+    <p>User Score: <span id="userScore">0</span></p>
+    <button id="resetScore">Reset Score</button>
+  </div>
+
+</body>
+<footer>
+  <script src="app.js"></script>
+</footer>
+
 </html>
